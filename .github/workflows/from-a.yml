@@ -1,7 +1,7 @@
 name: Use Artifacts and Build
 
 on:
- workflow_dispatch
+  workflow_dispatch
   # push:
   #   branches:
   #     - main
@@ -11,38 +11,85 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v3
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
-    - name: Download Artifacts
-      uses: actions/download-artifact@v4
-      with:
-        name: all-jar-artifacts
-        # url:  https://github.com/bankolejohn/uddl-query-3/actions/runs/7621124781/artifacts
-        # path: jar-artifacts/
-        repository: bankolejohn/uddl-1a
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        run-id: 7708322012
+      - name: Cache Maven dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
 
-    - name: List Extracted Files
-      run: |
+      - name: Download Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: all-jar-artifacts
+          # ... (rest of your download configuration)
+
+      - name: List Extracted Files
+        run: |
           ls -la ${{ github.workspace }}
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven  # Reuse cached Maven installation
+
+      - name: Build with Downloaded Artifacts
+        run: |
+          mvn clean install
+
+
+
+# name: Use Artifacts and Build
+
+# on:
+#  workflow_dispatch
+#   # push:
+#   #   branches:
+#   #     - main
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#     - name: Checkout Code
+#       uses: actions/checkout@v3
+
+#     - name: Download Artifacts
+#       uses: actions/download-artifact@v4
+#       with:
+#         name: all-jar-artifacts
+#         # url:  https://github.com/bankolejohn/uddl-query-3/actions/runs/7621124781/artifacts
+#         # path: jar-artifacts/
+#         repository: bankolejohn/uddl-1a
+#         github-token: ${{ secrets.GITHUB_TOKEN }}
+#         run-id: 7708322012
+
+#     - name: List Extracted Files
+#       run: |
+#           ls -la ${{ github.workspace }}
   
 
-    # - name: Unzip Artifacts
-    #   run: |
-    #       unzip -o ${{ github.workspace }}/all-jar-artifacts.zip -d ${{ github.workspace }}
+#     # - name: Unzip Artifacts
+#     #   run: |
+#     #       unzip -o ${{ github.workspace }}/all-jar-artifacts.zip -d ${{ github.workspace }}
 
-    - name: Set up JDK 17
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: maven
+#     - name: Set up JDK 17
+#       uses: actions/setup-java@v3
+#       with:
+#         java-version: '17'
+#         distribution: 'temurin'
+#         cache: maven
 
-    - name: Build with Downloaded Artifacts
-      run: |
-        # You can now use the JAR files in the 'jar-artifacts/' directory
-        # for your Maven build or any other necessary tasks.
-        # mvn clean install
-        mvn clean install
+#     - name: Build with Downloaded Artifacts
+#       run: |
+#         # You can now use the JAR files in the 'jar-artifacts/' directory
+#         # for your Maven build or any other necessary tasks.
+#         # mvn clean install
+#         mvn clean install
