@@ -39,6 +39,19 @@ jobs:
           distribution: 'temurin'
           cache: maven  # Reuse cached Maven installation
 
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Download Artifacts
+        uses: actions/download-artifact@v4
+        with:
+         name: all-jar-artifacts
+        # url:  https://github.com/bankolejohn/uddl-query-3/actions/runs/7621124781/artifacts
+        # path: jar-artifacts/
+         repository: bankolejohn/uddl-1a
+         github-token: ${{ secrets.GITHUB_TOKEN }}
+         run-id: 7787029732
+    
       - name: Build with Downloaded Artifacts
         run: |
           mvn clean install
