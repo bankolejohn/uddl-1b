@@ -28,10 +28,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      - name: Download Artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: all-jar-artifacts
+      # - name: Download Artifacts
+      #   uses: actions/download-artifact@v4
+      #   with:
+      #     name: all-jar-artifacts
           # ... (rest of your download configuration)
 
       - name: List Extracted Files
