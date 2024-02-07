@@ -18,12 +18,12 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: m2-cache
-          path: ~/.m2/repository
+          path: ~/.m2/repository/.cache
 
       - name: Cache Maven dependencies
         uses: actions/cache@v3
         with:
-          path: ~/.m2/repository
+          path: ~/.m2/repository/.cache
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-maven-
@@ -56,7 +56,7 @@ jobs:
         # path: jar-artifacts/
          repository: bankolejohn/uddl-1a
          github-token: ${{ secrets.GITHUB_TOKEN }}
-         run-id: 7787029732
+         run-id: 7810216591
     
       - name: Build with Downloaded Artifacts
         run: |
