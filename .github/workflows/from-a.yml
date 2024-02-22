@@ -61,7 +61,11 @@ jobs:
          repository: bankolejohn/uddl-1a
          github-token: ${{ secrets.GITHUB_TOKEN }}
          run-id: 7827114551
-    
+      - name: Download com.epistimis.uddl.query
+        uses: maven/maven-action@v3
+        with:
+         goals: dependency:get -DgroupId=com.epistimis.uddl -DartifactId=uddl.query -Dversion=1.0.0
+
       - name: Build with Downloaded Artifacts
         run: |
           mvn clean install
