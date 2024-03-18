@@ -66,10 +66,10 @@ jobs:
       #   with:
       #    goals: dependency:get -DgroupId=com.epistimis.uddl -DartifactId=uddl.query -Dversion=1.0.0
 
-      - name: Unzip artifacts
-        run: |
-          unzip -o ${{ github.workspace }}/all-jar-artifacts -d ${{ github.workspace }}
-          ls -R 
+      # - name: Unzip artifacts
+      #   run: |
+      #     unzip -o ${{ github.workspace }}/all-jar-artifacts -d ${{ github.workspace }}
+      #     ls -R 
 
       - name: Build with Downloaded Artifacts
         run: |
