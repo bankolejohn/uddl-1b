@@ -1,0 +1,27 @@
+name: Build with .m2 cache
+
+on:
+    workflow_dispatch
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v3
+
+            - name: Setuo JDK 17 Temurin
+              uses: actions/setup-java@v3
+              with:
+                java-version: 17
+                distribution: temurin
+                cache: maven
+
+            - name: Configure maven settings
+              run: echo "<repositories><repository><id>local-repo</id><name>Local Maven Repository</name><url>C:/Users/HP/.m2</url></repository></repositories>" >> settings.xml
+
+            - name: build code
+              run: mvn clean install
+
+
