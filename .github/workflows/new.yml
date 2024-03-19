@@ -21,7 +21,11 @@ jobs:
             - name: Configure maven settings
               run: echo "<repositories><repository><id>local-repo</id><name>Local Maven Repository</name><url>C:/Users/HP/.m2</url></repository></repositories>" >> settings.xml
 
-            - name: build code
-              run: mvn clean install
+            - name: Build with Maven
+              run: mvn clean install -Dmaven.repo.local=C:/Users/HP/.m2
+
+
+            # - name: build code
+            #   run: mvn clean install
 
 
