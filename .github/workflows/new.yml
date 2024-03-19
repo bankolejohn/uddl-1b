@@ -1,31 +1,73 @@
-name: Build with .m2 cache
+# name: Build with .m2 cache
+
+# on:
+#     workflow_dispatch
+
+# jobs:
+#     build:
+#         runs-on: ubuntu-latest
+
+#         steps:
+#             - name: Checkout Code
+#               uses: actions/checkout@v3
+
+#             - name: Setuo JDK 17 Temurin
+#               uses: actions/setup-java@v3
+#               with:
+#                 java-version: 17
+#                 distribution: temurin
+#                 cache: maven
+
+name: Utilize JARs from First Repo (Maven)
 
 on:
-    workflow_dispatch
+  workflow_dispatch  # Trigger manually via workflow_dispatch
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest  # Or your desired runner OS
 
-        steps:
-            - name: Checkout Code
-              uses: actions/checkout@v3
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
-            - name: Setuo JDK 17 Temurin
-              uses: actions/setup-java@v3
-              with:
-                java-version: 17
-                distribution: temurin
-                cache: maven
+      # Additional steps to prepare your environment (optional)
 
-            - name: Configure maven settings
-              run: echo "<repositories><repository><id>local-repo</id><name>Local Maven Repository</name><url>C:/Users/HP/.m2</url></repository></repositories>" >> settings.xml
+      - name: Configure Maven Settings
+        run: |
+          echo '<repositories>' >> settings.xml
+          echo '  <repository>' >> settings.xml
+          echo '    <id>first-repo-maven</id>' >> settings.xml
+          echo '    <name>First Repository Maven Repository</name>' >> settings.xml
+          echo '    <url>PATH_TO_FIRST_REPO_MAVEN_REPO</url>' >> settings.xml
+          echo '  </repository>' >> settings.xml
+          echo '</repositories>' >> settings.xml
+          # Replace PATH_TO_FIRST_REPO_MAVEN_REPO with the actual path
 
-            - name: Build with Maven
-              run: mvn clean install -Dmaven.repo.local=C:/Users/HP/.m2
+      - name: Set Up JDK 17 Temurin
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          distribution: temurin
+          cache: maven  # Cache downloaded JDK if desired
+
+      - name: Use JARs from First Repo
+        uses: maven/maven-action@v3
+        with:
+          goals: install  # Adjust goals if needed
+          settings-file: settings.xml
+
+      # Rest of your build process steps
 
 
-            # - name: build code
-            #   run: mvn clean install
+#             - name: Configure maven settings
+#               run: echo "<repositories><repository><id>local-repo</id><name>Local Maven Repository</name><url>C:/Users/HP/.m2</url></repository></repositories>" >> settings.xml
+
+#             - name: Build with Maven
+#               run: mvn clean install -Dmaven.repo.local=C:/Users/HP/.m2
+
+
+#             # - name: build code
+#             #   run: mvn clean install
 
 
