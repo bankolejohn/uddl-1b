@@ -51,7 +51,7 @@
         <version>1.0.0-SNAPSHOT</version>
         <classifier>sources-feature</classifier>
 	<scope>system</scope>
-    <systemPath>${github.workspace}/home/runner/work/uddl-1b/uddl-1b</systemPath>
+    <systemPath>${github.workspace}/home/runner/work/uddl-1b/uddl-1b/com.epistimis.uddl.query.feature-1.0.0-SNAPSHOT-sources-feature.jar</systemPath>
   </dependency>
 		</dependencies>
 	</dependencyManagement>
