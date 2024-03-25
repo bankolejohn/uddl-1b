@@ -49,65 +49,87 @@
         <groupId>com.epistimis</groupId>
         <artifactId>uddl.query.feature</artifactId>
         <version>1.0.0-SNAPSHOT</version>
+	<scope>system</scope>
+    	<systemPath>${project.basedir}</systemPath>
     </dependency>
     <dependency>
         <groupId>com.episitimis</groupId>
         <artifactId>uddl.query.feature</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <classifier>sources-feature</classifier>
+	<scope>system</scope>
+    	<systemPath>${project.basedir}</systemPath>
     </dependency>
 	<dependency>
     <groupId>com.epistimis.uddl.query</groupId>
     <artifactId>query-1.0.0-SNAPSHOT</artifactId>
     <version>SNAPSHOT</version>
+    <scope>system</scope>
+    <systemPath>${project.basedir}</systemPath>
   </dependency>
   
   <dependency>
     <groupId>com.epistimis.uddl.query.feature</groupId>
     <artifactId>feature-1.0.0-SNAPSHOT-sources-feature</artifactId>
     <version>SNAPSHOT</version>
+    <scope>system</scope>
+    <systemPath>${project.basedir}</systemPath>
   </dependency>
   
   <dependency>
     <groupId>com.epistimis.uddl.query.feature</groupId>
     <artifactId>feature-1.0.0-SNAPSHOT</artifactId>
     <version>SNAPSHOT</version>
+    <scope>system</scope>
+    <systemPath>${project.basedir}</systemPath>
   </dependency>
   
   <dependency>
     <groupId>com.epistimis.uddl.query.ide</groupId>
     <artifactId>ide-1.0.0-SNAPSHOT-ls</artifactId>
     <version>SNAPSHOT</version>
+    <scope>system</scope>
+    <systemPath>${project.basedir}</systemPath>
   </dependency>
   
   <dependency>
     <groupId>com.epistimis.uddl.query.ide</groupId>
     <artifactId>ide-1.0.0-SNAPSHOT-sources</artifactId>
     <version>SNAPSHOT</version>
+    <scope>system</scope>
+    <systemPath>${project.basedir}</systemPath>
   </dependency>
   
   <dependency>
     <groupId>com.epistimis.uddl.query.ide</groupId>
     <artifactId>ide-1.0.0-SNAPSHOT</artifactId>
     <version>SNAPSHOT</version>
+    <scope>system</scope>
+    <systemPath>${project.basedir}</systemPath>
   </dependency>
   
   <dependency>
     <groupId>com.epistimis.uddl.query.tests</groupId>
     <artifactId>tests-1.0.0-SNAPSHOT-sources</artifactId>
     <version>SNAPSHOT</version>
+    <scope>system</scope>
+    <systemPath>${project.basedir}</systemPath>
   </dependency>
   
   <dependency>
     <groupId>com.epistimis.uddl.query.tests</groupId>
     <artifactId>tests-1.0.0-SNAPSHOT</artifactId>
     <version>SNAPSHOT</version>
+    <scope>system</scope>
+    <systemPath>${project.basedir}</systemPath>
   </dependency>
   
   <dependency>
     <groupId>com.epistimis.uddl.query.ui</groupId>
     <artifactId>ui-1.0.0-SNAPSHOT-sources</artifactId>
     <version>SNAPSHOT</version>
+    <scope>system</scope>
+    <systemPath>${project.basedir}</systemPath>
   </dependency>
   
   <dependency>
