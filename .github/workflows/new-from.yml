@@ -19,6 +19,11 @@ jobs:
                 github-token: ${{secrets.GITHUB_TOKEN}}
                 run-id: 8414074686
 
+            - name: list files
+              run: |
+               pwd
+               ls -R
+
             # - name: unzip artifacts
             #   run: |
             #    unzip -o ${{ github.workspace }}/all-jar-artifacts -d ${{ github.workspace }}
@@ -31,6 +36,6 @@ jobs:
                        distribution: 'temurin'
                        cache: maven
 
-            - name: Build code
-              run: mvn clean install
+            # - name: Build code
+            #   run: mvn clean install
               
