@@ -17,7 +17,7 @@ jobs:
                 name: all-jar-artifacts
                 repository: bankolejohn/uddl-la
                 github-token: ${{secrets.GITHUB_TOKEN}}
-                run-id: 8413924253
+                run-id: 8414074686
 
             - name: unzip artifacts
               run: |
