@@ -1,0 +1,36 @@
+name: download artifact and build
+
+on:
+    workflow_dispatch
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: checkout code
+              uses: actions/checkout@v3
+
+            - name: download artifact
+              uses: actions/download-artifact@v4
+              with:
+                name: all-jar-artifacts
+                repository: bankolejohn/uddl-la
+                github-token: ${{secrets.GITHUB_TOKEN}}
+                run-id: 7827114551
+
+            - name: unzip artifacts
+              run: |
+               unzip -o ${{ github.workspace }}/all-jar-artifacts -d ${{ github.workspace }}
+               ls -R
+
+            - name: Set up JDK 17
+              uses: actions/setup-java@v3
+              with:
+                       java-version: '17'
+                       distribution: 'temurin'
+                       cache: maven
+
+            - name: Build code
+              run: mvn clean install
+              
