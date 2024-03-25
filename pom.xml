@@ -433,6 +433,7 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+	</dependency>
 	<repositories>
 		<repository>
 			<id>codehaus-snapshots</id>
