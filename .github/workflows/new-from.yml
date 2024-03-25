@@ -22,7 +22,7 @@ jobs:
             - name: list files
               run: |
                pwd
-               ls -R
+               ls
 
             # - name: unzip artifacts
             #   run: |
