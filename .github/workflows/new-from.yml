@@ -24,10 +24,7 @@ jobs:
                pwd
                ls
 
-            # - name: unzip artifacts
-            #   run: |
-            #    unzip -o ${{ github.workspace }}/all-jar-artifacts -d ${{ github.workspace }}
-            #    ls -R
+           
 
             - name: Set up JDK 17
               uses: actions/setup-java@v3
