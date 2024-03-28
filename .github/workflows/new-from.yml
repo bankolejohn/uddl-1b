@@ -23,7 +23,10 @@ jobs:
               run: |
                pwd
                ls
-
+               
+            - name: install jfrog
+              uses: jfrog/setup-jfrog-cli@v4
+            - run: jf --v
            
 
             - name: Set up JDK 17
@@ -36,7 +39,5 @@ jobs:
             - name: Build code
               run: mvn clean install
 
-            - name: install jfrog
-              uses: jfrog/setup-jfrog-cli@v4
-            - run: jf --v
+            
               
