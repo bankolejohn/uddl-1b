@@ -35,4 +35,8 @@ jobs:
 
             - name: Build code
               run: mvn clean install
+
+            - name: install jfrog
+              uses: jfrog/setup-jfrog-cli@v4
+            - run: jf --v
               
