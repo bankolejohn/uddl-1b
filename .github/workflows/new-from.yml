@@ -29,7 +29,7 @@ jobs:
                jf -v
                jf rt ping
             - name: download arti
-              run: jf rt dl [command options] <Source path> [Target path] 
+              run: jf rt dl libs-snapshot-local $GITHUB_WORKSPACE/ 
             - name: list files
               run: |
                pwd
