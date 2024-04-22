@@ -28,7 +28,8 @@ jobs:
               run: |
                jf -v
                jf rt ping
-
+            - name: download arti
+              run: jf rt dl [command options] <Source path> [Target path] 
             - name: list files
               run: |
                pwd
